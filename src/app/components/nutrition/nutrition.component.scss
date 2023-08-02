@@ -1,0 +1,53 @@
+h5,
+h6 {
+  margin: 0;
+}
+
+ion-label {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.recipe-nutrition_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  span {
+    color: #9b9b9b;
+    font-size: 15px;
+  }
+}
+
+.recipe-nutrition_item,
+.recipe-nutrition_sub-item li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid;
+  padding: 10px 0;
+}
+
+.recipe-nutrition_sub-item {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    border-bottom: none;
+
+    div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  ion-icon {
+    margin-top: 8px;
+    margin-right: 8px;
+  }
+}
+
+.recipe-nutrition_sub-item li:last-child {
+  border-bottom: 2px solid;
+}

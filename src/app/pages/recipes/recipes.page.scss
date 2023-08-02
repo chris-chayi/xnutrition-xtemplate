@@ -1,0 +1,40 @@
+ion-title {
+  text-transform: capitalize;
+}
+
+ion-item {
+  --padding-bottom: 10px;
+  --padding-top: 10px;
+}
+
+.recipe-thumbnail {
+  width: 120px;
+  border-radius: 15px;
+}
+
+.recipe-caption {
+  ion-label {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  span {
+    color: #9b9b9b;
+    font-size: 15px;
+  }
+}
+
+.recipe-total-time {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+
+  span,
+  ion-icon {
+    font-size: 12px;
+  }
+
+  span {
+    margin-left: 5px;
+  }
+}

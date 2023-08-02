@@ -1,0 +1,81 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start" mode="md">
+            <ion-back-button class="recipe-back_btn" text="" mode="md">
+            </ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content
+    [fullscreen]="true"
+    color="light"
+    appParallaxHeader
+    [scrollEvents]="true"
+>
+    <div
+        class="image-header"
+        [style.background-image]="'url(' + recipe?.staticImage + ')'"
+    ></div>
+
+    <div class="recipe-detail_holder">
+        <ion-label>{{recipe?.label}}</ion-label>
+
+        <div class="recipe-info">
+            <div class="recipe-info_clock">
+                <img src="../../../assets/icon/clock.svg" alt="clock icon"/>
+                <span>{{ recipe?.totalTime ? recipe?.totalTime : '0'}} min</span>
+            </div>
+            <div class="recipe-info_people">
+                <img src="../../../assets/icon/people.svg" alt="people icon"/>
+                <span>{{recipe?.yield ? recipe?.yield : '0'}}</span>
+            </div>
+            <div class="recipe-info_flame">
+                <img src="../../../assets/icon/flame.svg" alt="flame icon"/>
+                <span
+                >{{ recipe?.totalWeight ? recipe?.totalWeight.toFixed(0) :
+                    "0"}}g</span
+                >
+            </div>
+        </div>
+
+        <div class="recipe-ingredient">
+            <ion-label>Ingredients:</ion-label>
+
+            <ul>
+                <div *ngFor="let item of recipe?.ingredientLines">
+                    <ion-icon name="ellipse" color="recipe-orange"></ion-icon>
+                    <li>{{item}}</li>
+                </div>
+            </ul>
+        </div>
+
+        <ion-modal
+            [isOpen]="isActive"
+            [breakpoints]="[0, 0.7, 1]"
+            [initialBreakpoint]="0.7"
+            class="nutrient-sheet"
+            (didDismiss)="seeNutrition()"
+        >
+            <ng-template>
+                <app-nutrition
+                    [calories]="recipe?.calories"
+                    [totalWeight]="recipe?.totalWeight"
+                    [nutrients]="recipe?.digest"
+                ></app-nutrition>
+            </ng-template>
+        </ion-modal>
+
+        <div class="ion-padding-top">
+            <ion-button
+                shape="round"
+                expand="block"
+                color="secondary"
+                strong="true"
+                (click)="seeNutrition()"
+            >
+                See Nutrition
+            </ion-button>
+        </div>
+    </div>
+</ion-content>

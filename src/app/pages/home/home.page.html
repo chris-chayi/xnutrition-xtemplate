@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title> Recipes</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="search()">
+                <ion-icon slot="end" name="search-outline" color="dark"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-grid>
+        <ion-row class="ion-padding-bottom">
+            <ion-col
+                    class="recipe-card"
+                    (click)="goTo(recipe)"
+                    size-xs="12"
+                    size-sm="6"
+                    size-md="3"
+                    size-lg="2"
+                    *ngFor="let recipe of recipes"
+            >
+                <div class="recipe-card_body">
+                    <img
+                            class="recipe-card_featured-image"
+                            [src]="recipe?.featuredImage"
+                    />
+                    <div class="recipe-card_caption">
+                        <h1>{{recipe?.recipe}}</h1>
+                        <p>Recipe Category</p>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/" color="dark" text=""></ion-back-button>
+        </ion-buttons>
+        <ion-toolbar>
+            <ion-title>Search where Recipes</ion-title>
+        </ion-toolbar>
+    </ion-toolbar>
+    <ion-toolbar>
+        <ion-searchbar
+                placeholder="Type here to search"
+                debounce="500"
+                [value]="term"
+                (ionInput)="handleChange($event)"
+                #searchBar
+        ></ion-searchbar>
+        <ion-buttons slot="end">
+            <ion-button (click)="search()" color="dark"> Search</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Search Recipes</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-list lines="full">
+        <ion-item
+                *ngFor="let item of categoryRecipes"
+                button
+                detail="true"
+                (click)="detail(item)"
+        >
+            <img
+                    [src]="item?.recipe?.image"
+                    alt=""
+                    slot="start"
+                    class="recipe-thumbnail"
+            />
+
+            <div class="recipe-caption">
+                <ion-label
+                >{{item?.recipe?.label?.length < 17 ? item?.recipe?.label :
+                    item?.recipe?.label?.slice(0, 16) + "..." }}</ion-label
+                >
+                <span> {{item?.recipe?.dishType}} </span>
+                <div class="recipe-total-time">
+                    <ion-icon name="time" color="recipe-green"></ion-icon>
+                    <span> {{item?.recipe?.totalTime}} min</span>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>
